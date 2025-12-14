@@ -51,8 +51,88 @@ public class Person {
                e.printStackTrace();
            }
         }
+        //delete person details
+        void delete(){
+           try{
+            sql = "DELETE FROM person WHERE id = ?";
+            ps= conn.prepareStatement(sql);
+            
+            Scanner sc = new Scanner(System.in);   
+            System.out.println("Enter id:");
+            int id = sc.nextInt();
+            
+            ps.setInt(1, id);
+            ps.executeUpdate();
+           }
+           catch(SQLException e){
+               e.printStackTrace();
+           }
+      }
+        //display person details
+        void display(){
+           try{
+           sql = "SELECT * FROM person";
+           ps= conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int age = rs.getInt("age");
+                String address = rs.getString("address");
+                System.out.println("ID: " + id + "\nName: " + name+ "\nAge: " + age+ "\nAddress: " + address);
+            }
+           }
+           catch(SQLException e){
+               e.printStackTrace();
+           }
+       }
+        //display details of person whose age>=18
+        void display18(){
+           try{
+           sql = "SELECT * FROM person WHERE age>= ?";
+           ps= conn.prepareStatement(sql);
+           
+           ps.setInt(1, 18);
+           ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int age = rs.getInt("age");
+                String address = rs.getString("address");
+                System.out.println("ID: " + id + "\nName: " + name+ "\nAge: " + age+ "\nAddress: " + address);
+            }
+           }
+           catch(SQLException e){
+               e.printStackTrace();
+           }
+       }
+        //update age of the person 
+        void updateAge(){
+          try{
+            sql = "UPDATE person SET age = ? WHERE id = ?";
+            ps= conn.prepareStatement(sql);
+            
+            Scanner sc = new Scanner(System.in);   
+            System.out.println("Enter id:");
+            int id = sc.nextInt();
+            System.out.println("Enter new age:");
+            int age = sc.nextInt();
+            
+            ps.setDouble(1, age);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+           }
+           catch(SQLException e){
+               e.printStackTrace();
+           }
+      }
         public static void main(String[] args){
             Person p = new Person();
-            p.insert();
+            //p.insert();
+            //p.display18();
+            //p.updateAge();
+            p.delete();
+            p.display();
         }
 }
