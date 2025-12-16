@@ -1,0 +1,12 @@
+
+Store Procedure: To create a store procedure on XAMPP follow the following steps: 
+    1. Click on the newly created database name (e.g., test) in the left sidebar.
+    2. Click on the "SQL" tab to open the SQL query editor.
+    3. Enter the following SQL code to create the stored procedure:
+        DELIMITER //
+        CREATE PROCEDURE insertEmployee(IN ename VARCHAR(100), IN esalary double, IN ebranch VARCHAR(5))
+        BEGIN
+        INSERT INTO employee (name, salary, branch) VALUES (ename, esalary, branch);
+        END 
+    4. Click the "Go" button to execute the SQL code.
+

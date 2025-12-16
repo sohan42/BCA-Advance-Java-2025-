@@ -2,6 +2,7 @@ package Unit2;
 
 import java.sql.*;
 import java.util.Scanner;
+
 /*WAP to call the store procedure to store employee details in the employee table. Use the concept
 of class and object. */
 
