@@ -10,3 +10,9 @@ Store Procedure: To create a store procedure on XAMPP follow the following steps
         END 
     4. Click the "Go" button to execute the SQL code.
 
+Example: Store procedure to display employee details.
+        DELIMITER //
+        CREATE PROCEDURE displayEmployee()
+        BEGIN
+            SELECT* FROM employee;
+        END

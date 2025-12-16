@@ -46,8 +46,26 @@ public class MyProcedure{
             System.out.println(ex);
         }
     }
+    
+    void display(){
+        String sql = "{CALL displayEmployee()}";
+        try {
+            cs = conn.prepareCall(sql);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double salary = rs.getDouble("salary");
+                String branch = rs.getString("branch");
+                System.out.println("ID: " + id + "\nName: " + name+ "\nSalary: " + salary+ "\nBranch: " + branch);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     public static void main(String[] args){
         MyProcedure m = new MyProcedure();
-        m.insert();
+        //m.insert();
+        m.display();
     }
 }
