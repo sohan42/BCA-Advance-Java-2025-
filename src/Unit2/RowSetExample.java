@@ -41,8 +41,36 @@ public class RowSetExample {
                 System.out.println(e);
             }
         }
+        void update(int r){
+            try{
+                rose.absolute(r); 
+                rose.updateString("name", "Jiwan Adhikari");
+                rose.updateRow();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
+        }
+        void insert(){
+            try{
+                rose.moveToInsertRow(); 
+                rose.updateString("name", "Anita Rai");
+                rose.updateDouble("salary", 38000);
+                rose.updateString("branch", "DRN");
+                rose.insertRow();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
+        }
+        void delete(int r){
+            try{
+                rose.absolute(r);
+                rose.deleteRow();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
+        }
     public static void main(String[] args){
         RowSetExample rs = new RowSetExample();
-        rs.display();
+        rs.delete(2);
     }
 }
